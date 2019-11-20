@@ -9,7 +9,11 @@ jobs:
       run: gfortran --version
 
   os:
-    runs-on: [ubuntu-16.04, ubuntu-18.04, macos-latest, windows-latest]
+    strategy:
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04, macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Show runner.os
       run: echo ${{ runner.os }}
