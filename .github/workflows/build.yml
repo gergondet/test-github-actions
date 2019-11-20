@@ -8,6 +8,12 @@ jobs:
     - name: Test
       run: gfortran --version
 
+  os:
+    runs-on: [ubuntu-16.04, ubuntu-18.04, macos-latest, windows-latest]
+    steps:
+    - name: Show runner.os
+      run: echo ${{ runner.os }}
+
   dump:
     runs-on: ubuntu-16.04
     steps:
