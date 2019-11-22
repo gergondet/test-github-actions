@@ -12,14 +12,14 @@ jobs:
     - name: Test install dependencies
       uses: jrl-umi3218/github-actions/install-dependencies@master
       with:
-        ubuntu:
+        ubuntu: |
           ppa: pierre-gergondet+ppa/multi-contact-unstable
           apt: libeigen3-dev libspacevecalg-dev
           pip: Cython coverage nose numpy
-        macos:
+        macos: |
           brew: eigen
           pip: Cython coverage nose numpy
-        windows:
+        windows: |
           pip: Cython coverage nose numpy
           github:
             - path: eigenteam/eigen-git-mirror
