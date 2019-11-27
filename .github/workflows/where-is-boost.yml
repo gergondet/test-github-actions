@@ -1,0 +1,15 @@
+name: Where is boost?
+on: push
+
+jobs:
+  one:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Show me env
+        run: |
+          set -x
+          env
+      - name: Show me .cmake
+        run: |
+          set -x
+          ls -la ~/.cmake
