@@ -9,6 +9,6 @@ jobs:
         run: |
           dpkg -l | grep clang || echo "No clang stuff installed"
           sudo apt-get update
-          sudo apt-get remove clang-6.0
-          sudo apt-get install clang-format
+          sudo apt-get remove clang-6.0 libllvm6
+          sudo apt-get install clang-format-6.0
           clang-format --version
