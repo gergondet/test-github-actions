@@ -10,9 +10,9 @@ jobs:
       if: github.ref == 'refs/heads/master'
       run: |
         set -x
-        git config --global http.extraheader 'AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}'
+        git config --global http.extraheader "AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}"
         git config --global user.name "JRL/IDH Continuous Integration Tool"
         git config --global user.email "jrl-idh+ci@gmail.com"
         cd $GITHUB_WORKSPACE
         git checkout -b test
-        git -c http.extraheader='AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}' push --force origin test:test
+        git -c http.extraheader="AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}" push --force origin test:test
