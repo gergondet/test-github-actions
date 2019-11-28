@@ -7,4 +7,5 @@ jobs:
     steps:
       - name: Show me stuff
         run: |
-          ls C:/ProgramData/chocolatey/bin/
+          ls C:/ProgramData/chocolatey/
+          ls C:/ProgramData/chocolatey/lib
