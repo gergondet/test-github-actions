@@ -16,3 +16,8 @@ jobs:
         run: |
           set -x
           env
+  Windows:
+    runs-on: windows-latest
+    steps:
+      - name: Show me PATH
+        run: echo %PATH%
