@@ -10,4 +10,4 @@ jobs:
           dpkg -l | grep clang || echo "No clang stuff installed"
           dpkg -l | grep llvm || echo "No llvm stuff installed"
           sudo apt-get update
-          sudo apt-get install -y cython cython3 python-nose python3-nose python-numpy python3-numpy python-coverage python3-coverage python-setuptools python3-setuptools libeigen3-dev doxygen doxygen-latex libboost-all-dev gfortran
+          sudo apt-get install -y doxygen
