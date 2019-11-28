@@ -10,4 +10,5 @@ jobs:
           dpkg -l | grep clang || echo "No clang stuff installed"
           dpkg -l | grep llvm || echo "No llvm stuff installed"
           sudo apt-get update
+          sudo apt-get upgrade
           sudo apt-get install -y doxygen gfortran
