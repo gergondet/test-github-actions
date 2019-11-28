@@ -15,4 +15,4 @@ jobs:
         git config --global user.email "jrl-idh+ci@gmail.com"
         cd $GITHUB_WORKSPACE
         git checkout -b test
-        git push -c http.extraheader 'AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}' --force origin test:test
+        git -c http.extraheader='AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}' push --force origin test:test
