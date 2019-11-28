@@ -9,3 +9,4 @@ jobs:
         run: |
           dpkg -l | grep clang || echo "No clang stuff installed"
           dpkg -l | grep llvm || echo "No llvm stuff installed"
+          sudo apt-get install -qq doxygen
