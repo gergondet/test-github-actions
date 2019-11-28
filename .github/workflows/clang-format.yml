@@ -8,7 +8,8 @@ jobs:
       - name: Show me clang-format
         run: |
           dpkg -l | grep clang || echo "No clang stuff installed"
+          dpkg -l | grep llvm || echo "No llvm stuff installed"
           sudo apt-get update
-          sudo apt-get remove clang-6.0 libllvm6
+          sudo apt-get remove clang-6.0 libclang1-6.0 libclang-common-6.0-dev libllvm6.0
           sudo apt-get install clang-format-6.0
           clang-format --version
