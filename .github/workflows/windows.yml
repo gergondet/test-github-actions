@@ -1,0 +1,10 @@
+name: Windows
+on: push
+
+jobs:
+  Windows:
+    runs-on: windows-latest
+    steps:
+      - name: Show me stuff
+        run: |
+          ls C:/ProgramData/chocolatey/bin/
