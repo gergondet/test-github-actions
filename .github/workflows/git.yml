@@ -18,4 +18,5 @@ jobs:
         git -c http.https://github.com.extraheader="AUTHORIZATION: Basic ${{ secrets.GITHUB_TOKEN }}" push --force origin test:test
     - name: Try again
       if: failure()
-      run: git -c http.https://github.com.extraheader="AUTHORIZATION: Basic ${{ secrets.GITHUB_TOKEN }}" push --force origin test:test
+      run: |
+        git -c http.https://github.com.extraheader="AUTHORIZATION: Basic ${{ secrets.GITHUB_TOKEN }}" push --force origin test:test
