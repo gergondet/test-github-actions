@@ -1,0 +1,11 @@
+name: clang?
+on: push
+
+jobs:
+  Ubuntu_16_04:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Show me clang
+        run: |
+          dpkg -l | grep clang || echo "No clang stuff installed"
+          dpkg -l | grep llvm || echo "No llvm stuff installed"
