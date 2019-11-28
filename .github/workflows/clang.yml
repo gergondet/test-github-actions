@@ -11,4 +11,5 @@ jobs:
           dpkg -l | grep llvm || echo "No llvm stuff installed"
           sudo apt-get update
           sudo apt-get -qq remove clang-6.0 libclang1-6.0 libclang-common-6.0-dev libllvm6.0
+          sudo apt-get install -y libclang1-3.8
           sudo apt-get install -y doxygen gfortran
