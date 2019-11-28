@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Show me PATH
         run: |
-          ($env:PATH).split(';')
           ($env:BOOST_ROOT)
           ls ($env:BOOST_ROOT)
+          ($env:BOOST_ROOT_1_69_0)
+          ls ($env:BOOST_ROOT)/lib
+          ls ($env:BOOST_ROOT)/libs
