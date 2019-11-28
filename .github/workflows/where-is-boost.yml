@@ -20,4 +20,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Show me PATH
-        run: ($env:PATH).split(';')
+        run: |
+          ($env:PATH).split(';')
+          ($env:BOOST_ROOT)
+          ls ($env:BOOST_ROOT)
