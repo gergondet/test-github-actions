@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: ./test-docker-action
+      env:
+        dist: '18.04'
       with:
         dist: '18.04'
-        env:
-          dist: '18.04'
