@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
-    - uses: ./test-docker-actions
+    - uses: ./test-docker-action
       with:
         dist: '18.04'
