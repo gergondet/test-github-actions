@@ -9,3 +9,5 @@ jobs:
     - uses: ./test-docker-action
       with:
         dist: '18.04'
+        env:
+          dist: '18.04'
