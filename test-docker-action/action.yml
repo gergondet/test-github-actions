@@ -1,0 +1,9 @@
+name: 'Test docker stuff'
+description: ''
+inputs:
+  dist:
+    description: 'Debian/Ubuntu distribution to target'
+    required: true
+runs:
+  using: 'docker://ubuntu:${{ inputs.dist }}'
+  entrypoint: 'sudo apt-get -qq update && sudo apt-get -qq install lsb-release && lsb_release -a'
