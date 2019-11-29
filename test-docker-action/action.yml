@@ -5,5 +5,5 @@ inputs:
     description: 'Debian/Ubuntu distribution to target'
     required: true
 runs:
-  using: 'docker://ubuntu:${{ inputs.dist }}'
+  using: 'docker://ubuntu:18.04'
   entrypoint: 'sudo apt-get -qq update && sudo apt-get -qq install lsb-release && lsb_release -a'
