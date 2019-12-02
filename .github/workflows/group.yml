@@ -1,0 +1,16 @@
+name: Test grouping
+on: push
+
+jobs:
+  push:
+    runs-on: ubuntu-18.04
+    steps:
+    - run: |
+      echo "::group::Group A"
+      echo "::group::Group A - Sub-group 1"
+      echo "::endgroup::"
+      echo "::group::Group A - Sub-group 2"
+      echo "::endgroup::"
+      echo "::endgroup::"
+      echo "::group::Group B"
+      echo "::endgroup::"
