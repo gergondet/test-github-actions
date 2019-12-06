@@ -8,18 +8,18 @@ jobs:
     - uses: actions/checkout@v1
     - run: |
         set -x
-        export IMAGE=gergondet/pbuilder:bionic-amd64
-        export PACKAGE_DIR=/tmp/packages-bionic-amd64
-        mkdir -p /tmp/pbuilder
-        mkdir -p ${PACKAGE_DIR}
-        cp package.recipe /tmp/pbuilder/
-        docker pull gergondet/pbuilder:bionic-amd64
-        docker run -d -v /tmp/pbuilder:/tmp/pbuilder -v ${PACKAGE_DIR}:${PACKAGE_DIR} --name builder --privileged -t $IMAGE /bin/bash
-        docker exec --privileged builder cowbuilder --update
-        docker exec builder git-build-recipe --no-build --allow-fallback-to-native /tmp/pbuilder/package.recipe /tmp/pbuilder
-        docker exec -w /tmp/pbuilder/package builder debuild --no-tgz-check -i -I -S -uc -us -d
-        docker exec --privileged builder cowbuilder --build /tmp/pbuilder/*.dsc
-        docker exec builder bash -c 'mv /var/cache/pbuilder/bionic-amd64/result/*.deb ${PACKAGE_DIR}'
+        mkdir -p /tmp/package
+        mkdir -p /tmp/packages-bionic-amd64
+        cd /tmp/package && git clone --recursive https://github.com/jrl-umi3218/Eigen3ToPython
+        docker run -d -v /tmp/package/Eigen3ToPython:/package -v /tmp/packages-bionic-amd64:/out --name builder --privileged -t ubuntu:18.04 /bin/bash
+        docker exec builder apt-get update -qq
+        docker exec builder apt-get install -qq devscripts build-essential equivs
+        docker exec builder mk-build-deps -i -r -t "apt-get -y" /package/debian/control
+        docker exec -w /package builder sed -i -e's/quilt/native' debian/source/format
+        docker exec -w /package builder dpkg-buildpackage -us -uc
+        docker exec builder ls /
+        docker exec builder bash -c "mv /*.deb /out"
+        ls /tmp/packages-bionic-amd64
     - uses: actions/upload-artifact@v1
       with:
         name: packages-bionic-amd64
