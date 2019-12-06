@@ -19,7 +19,7 @@ jobs:
         docker exec builder git-build-recipe --no-build --allow-fallback-to-native /tmp/pbuilder/package.recipe /tmp/pbuilder
         docker exec -w /tmp/pbuilder/package builder debuild --no-tgz-check -i -I -S -uc -us -d
         docker exec --privileged builder cowbuilder --build /tmp/pbuilder/*.dsc
-        docker exec builder mv /var/cache/pbuilder/bionic-amd64/result/*.deb ${PACKAGE_DIR}
+        docker exec builder bash -c 'mv /var/cache/pbuilder/bionic-amd64/result/*.deb ${PACKAGE_DIR}'
     - uses: actions/upload-artifact@v1
       with:
         name: packages-bionic-amd64
