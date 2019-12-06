@@ -12,7 +12,7 @@ jobs:
         mkdir -p /tmp/packages-bionic-amd64
         cd /tmp/package && git clone --recursive https://github.com/jrl-umi3218/Eigen3ToPython
         docker run -d -v /tmp/package/:/package --name builder --privileged -t gergondet/pbuilder:bionic-amd64 /bin/bash
-        docker exec builder mk-build-deps -i -r -t "apt-get -y" /package/debian/control
+        docker exec -w /package/Eigen3ToPython builder mk-build-deps -i -r -t "apt-get -y" debian/control
         docker exec -w /package/Eigen3ToPython builder debuild --no-tgz-check -i -I -b -us -uc
         docker exec builder ls /package
         ls /tmp/package
