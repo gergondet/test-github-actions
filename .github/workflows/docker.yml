@@ -5,7 +5,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Show me clang
-        run: |
+      - run: |
           cat /etc/docker/daemon.json || echo "No /etc/docker/daemon.json"
+          docker --version
           DOCKER_CLI_EXPERIMENTAL=enabled docker --help
+          docker buildx --help
