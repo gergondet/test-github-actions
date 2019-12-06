@@ -15,8 +15,7 @@ jobs:
         docker exec builder apt-get update -qq
         docker exec builder apt-get install -qq devscripts build-essential equivs
         docker exec builder mk-build-deps -i -r -t "apt-get -y" /package/debian/control
-        docker exec -w /package builder sed -i -e's/quilt/native' debian/source/format
-        docker exec -w /package builder dpkg-buildpackage -us -uc
+        docker exec -w /package builder debuild --no-tgz-check -i -I -b -us -uc
         docker exec builder ls /
         docker exec builder bash -c "mv /*.deb /out"
         ls /tmp/packages-bionic-amd64
