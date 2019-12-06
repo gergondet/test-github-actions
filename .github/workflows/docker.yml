@@ -13,7 +13,7 @@ jobs:
         mkdir -p ${PACKAGE_DIR}
         cp package.recipe /tmp/pbuilder/
         docker pull gergondet/pbuilder:bionic-amd64
-        docker run -d -v /tmp/pbuilder:/tmp/builder -v ${PACKAGE_DIR}:${PACKAGE_DIR} --name builder --privileged -t $IMAGE /bin/bash
+        docker run -d -v /tmp/pbuilder:/tmp/pbuilder -v ${PACKAGE_DIR}:${PACKAGE_DIR} --name builder --privileged -t $IMAGE /bin/bash
         docker exec --privileged builder cowbuilder --update
         docker exec builder git-build-recipe --no-build --allow-fallback-to-native /tmp/pbuilder/package.recipe /tmp/pbuilder
         docker exec -w /tmp/pbuilder/Eigen3ToPython builder debuild --no-tgz-check -i -I -S -uc -us -d
