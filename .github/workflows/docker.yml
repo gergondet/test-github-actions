@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
-        export IMAGE="gergondet/pbuilder:bionic-amd64'
+        export IMAGE=gergondet/pbuilder:bionic-amd64
         export PACKAGE_DIR=/tmp/packages-bionic-amd64
         mkdir -p /tmp/pbuilder
         mkdir -p ${PACKAGE_DIR}
