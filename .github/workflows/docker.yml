@@ -12,7 +12,7 @@ jobs:
         mkdir -p /tmp/packages-bionic-amd64
         cp build-package.sh /tmp/package
         cd /tmp/package && git clone --recursive https://github.com/jrl-umi3218/Eigen3ToPython
-        docker run -d -v /tmp/package/:/package --name builder --privileged -t gergondet/pbuilder:bionic-amd64 /bin/bash -c "/package/build-package.sh"
+        docker run -v /tmp/package/:/package --name builder --privileged -t gergondet/pbuilder:bionic-amd64 /bin/bash -c "/package/build-package.sh"
         mv /tmp/package/*.deb /tmp/packages-bionic-amd64
         ls /tmp/packages-bionic-amd64
     - uses: actions/upload-artifact@v1
