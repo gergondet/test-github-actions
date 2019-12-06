@@ -1,12 +1,25 @@
-name: docker buildx?
+name: docker build package
 on: push
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          cat /etc/docker/daemon.json || echo "No /etc/docker/daemon.json"
-          docker --version
-          DOCKER_CLI_EXPERIMENTAL=enabled docker --help
-          docker buildx --help
+    - run: |
+        export IMAGE="gergondet/pbuilder:bionic-amd64'
+        export PACKAGE_DIR=/tmp/packages-bionic-amd64
+        mkdir -p /tmp/pbuilder
+        mkdir -p ${PACKAGE_DIR}
+        echo """# git-build-recipe format 0.4 deb-version {debversion}+{time}+{git-commit}
+http//github.com/jrl-umi3218/Eigen3ToPython master""" > /tmp/pbuilder/package.recipe
+        docker pull gergondet/pbuilder:bionic-amd64
+        docker run -d -v /tmp/pbuilder:/tmp/builder -v ${PACKAGE_DIR}:${PACKAGE_DIR} --name builder --privileged -t $IMAGE /bin/bash
+        docker exec --privileged builder cowbuilder --update
+        docker exec builder git-build-recipe --no-build --allow-fallback-to-native /tmp/pbuilder/package.recipe /tmp/pbuilder
+        docker exec -w /tmp/pbuilder/Eigen3ToPython builder debuild --no-tgz-check -i -I -S -uc -us -d
+        docker exec --privileged builder cowbuilder --build /tmp/pbuilder/*.dsc
+        docker exec builder mv /var/cache/pbuilder/bionic-amd64/result/*.deb ${PACKAGE_DIR}
+    - uses: actions/upload-artifact@v1
+      with:
+        name: packages-bionic-amd64
+        path: /tmp/packages-bionic-amd64/
