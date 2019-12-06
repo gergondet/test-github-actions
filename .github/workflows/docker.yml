@@ -11,13 +11,12 @@ jobs:
         mkdir -p /tmp/package
         mkdir -p /tmp/packages-bionic-amd64
         cd /tmp/package && git clone --recursive https://github.com/jrl-umi3218/Eigen3ToPython
-        docker run -d -v /tmp/package/Eigen3ToPython:/package -v /tmp/packages-bionic-amd64:/out --name builder --privileged -t ubuntu:18.04 /bin/bash
-        docker exec builder apt-get update -qq
-        docker exec builder apt-get install -qq devscripts build-essential equivs
+        docker run -d -v /tmp/package/:/package --name builder --privileged -t gergondet/pbuilder:bionic-amd64 /bin/bash
         docker exec builder mk-build-deps -i -r -t "apt-get -y" /package/debian/control
-        docker exec -w /package builder debuild --no-tgz-check -i -I -b -us -uc
-        docker exec builder ls /
-        docker exec builder bash -c "mv /*.deb /out"
+        docker exec -w /package/Eigen3ToPython builder debuild --no-tgz-check -i -I -b -us -uc
+        docker exec builder ls /package
+        ls /tmp/package
+        mv /tmp/package/*.deb /tmp/packages-bionic-amd64
         ls /tmp/packages-bionic-amd64
     - uses: actions/upload-artifact@v1
       with:
