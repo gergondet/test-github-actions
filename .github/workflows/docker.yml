@@ -7,6 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
+        set -x
         export IMAGE=gergondet/pbuilder:bionic-amd64
         export PACKAGE_DIR=/tmp/packages-bionic-amd64
         mkdir -p /tmp/pbuilder
@@ -16,7 +17,7 @@ jobs:
         docker run -d -v /tmp/pbuilder:/tmp/pbuilder -v ${PACKAGE_DIR}:${PACKAGE_DIR} --name builder --privileged -t $IMAGE /bin/bash
         docker exec --privileged builder cowbuilder --update
         docker exec builder git-build-recipe --no-build --allow-fallback-to-native /tmp/pbuilder/package.recipe /tmp/pbuilder
-        docker exec -w /tmp/pbuilder/Eigen3ToPython builder debuild --no-tgz-check -i -I -S -uc -us -d
+        docker exec -w /tmp/pbuilder/package builder debuild --no-tgz-check -i -I -S -uc -us -d
         docker exec --privileged builder cowbuilder --build /tmp/pbuilder/*.dsc
         docker exec builder mv /var/cache/pbuilder/bionic-amd64/result/*.deb ${PACKAGE_DIR}
     - uses: actions/upload-artifact@v1
