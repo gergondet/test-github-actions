@@ -24,6 +24,9 @@ jobs:
           # No Windows + Script
           - os: windows-latest
             build-type: script
+          # Script always use default compiler
+          - build-type: script
+            compiler: clang
     runs-on: ${{ matrix.os }}
     steps:
     - name: Run it
