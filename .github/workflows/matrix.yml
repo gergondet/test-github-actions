@@ -29,7 +29,16 @@ jobs:
             compiler: clang
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Run it
+    - name: Run it (no script)
+      if: matrix.build-type != 'script'
+      shell: bash
+      run: |
+        set -x
+        echo ${{ matrix.os }}
+        echo ${{ matrix.build-type }}
+        echo ${{ matrix.compiler }}
+    - name: Run it (script)
+      if: matrix.build-type == 'script'
       shell: bash
       run: |
         set -x
