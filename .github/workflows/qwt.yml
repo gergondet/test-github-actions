@@ -12,6 +12,10 @@ jobs:
       run: |
         set -x
         brew install qt5 qwt
+    - name: Headers?
+      run: |
+        set -x
+        ls /usr/local/opt/qwt/lib/qwt.framework/Headers
     - name: Build
       run: |
         set -x
