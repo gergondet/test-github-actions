@@ -17,7 +17,7 @@ if(APPLE)
     set_target_properties(Qwt::Qwt PROPERTIES
                           INTERFACE_INCLUDE_DIRECTORIES "${Qwt}/Headers"
                           )
-   target_link_libraries(Qwt::Qwt PUBLIC ${Qwt})
+    target_link_libraries(Qwt::Qwt INTERFACE ${Qwt})
   else()
     message(FATAL_ERROR "Could not find Qwt on your system")
   endif()
