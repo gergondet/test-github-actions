@@ -11,12 +11,13 @@ jobs:
     - name: Install Qwt
       run: |
         set -x
-        brew install qwt
+        brew install qt5 qwt
     - name: Build
       run: |
         set -x
         mkdir build
         cd build
+        export CMAKE_INSTALL_PREFIX=/usr/local/opt/qt:$CMAKE_INSTALL_PREFIX
         cmake ../
         make
         otool -L main
@@ -29,7 +30,7 @@ jobs:
     - name: Install Qwt
       run: |
         set -x
-        sudo apt-get install -y libqwt-qt5-dev
+        sudo apt-get install -y libqwt-qt5-dev qt5-default
     - name: Build
       run: |
         set -x
@@ -47,7 +48,7 @@ jobs:
     - name: Install Qwt
       run: |
         set -x
-        sudo apt-get install -y libqwt-qt5-dev
+        sudo apt-get install -y libqwt-qt5-dev qt5-default
     - name: Build
       run: |
         set -x
