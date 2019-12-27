@@ -4,7 +4,7 @@ on: push
 
 jobs:
 
-  qwt:
+  qwt-macos:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
@@ -18,3 +18,42 @@ jobs:
         mkdir build
         cd build
         cmake ../
+        make
+        otool -L main
+        ./main
+
+  qwt-xenial:
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Qwt
+      run: |
+        set -x
+        sudo apt-get install -y libqwt-qt5-dev
+    - name: Build
+      run: |
+        set -x
+        mkdir build
+        cd build
+        cmake ../
+        make
+        ldd main
+        ./main
+
+  qwt-bionic:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Qwt
+      run: |
+        set -x
+        sudo apt-get install -y libqwt-qt5-dev
+    - name: Build
+      run: |
+        set -x
+        mkdir build
+        cd build
+        cmake ../
+        make
+        ldd main
+        ./main
