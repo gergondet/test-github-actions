@@ -1,0 +1,14 @@
+name: QWT with brew?
+
+on: push
+
+jobs:
+
+  qwt:
+    runs-on: macos-latest
+    steps:
+    - run: |
+        set -x
+        brew install qwt
+        ls /usr/local/include
+        ls /usr/local/lib
