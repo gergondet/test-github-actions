@@ -10,5 +10,4 @@ jobs:
     - run: |
         set -x
         brew install qwt
-        ls /usr/local/include
-        ls /usr/local/lib
+        ls /usr/local/opt/qt/include
