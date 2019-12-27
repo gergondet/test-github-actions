@@ -8,9 +8,13 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
-    - run: |
+    - name: Install Qwt
+      run: |
         set -x
         brew install qwt
+    - name: Build
+      run: |
+        set -x
         mkdir build
         cd build
         cmake ../
