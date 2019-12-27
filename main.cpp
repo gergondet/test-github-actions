@@ -1,6 +1,6 @@
 #include <iostream>
-#include <qwt/qwt_global.h>
-#include <qwt/qwt_color_map.h>
+#include <qwt_global.h>
+#include <qwt_color_map.h>
 
 int main()
 {
