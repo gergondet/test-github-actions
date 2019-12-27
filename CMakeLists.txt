@@ -3,6 +3,8 @@
 cmake_minimum_required(VERSION 3.1)
 project(FindQwt LANGUAGES CXX)
 
+find_package(Qt5 REQUIRED COMPONENTS Widgets)
+
 set(QWT_PATHS
     /usr
     /usr/local/
@@ -71,3 +73,6 @@ if(Qwt_FOUND AND NOT TARGET Qwt::Qwt)
                               )
     endif()
 endif()
+
+add_executable(main main.cpp)
+target_link_libraries(main PUBLIC Qwt::Qwt Qt5::Widgets)
