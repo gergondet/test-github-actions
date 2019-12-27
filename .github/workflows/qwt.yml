@@ -17,7 +17,8 @@ jobs:
         set -x
         mkdir build
         cd build
-        export CMAKE_INSTALL_PREFIX=/usr/local/opt/qt:$CMAKE_INSTALL_PREFIX
+        export PATH=/usr/local/opt/qt/bin:$PATH
+        export CMAKE_PREFIX_PATH=/usr/local/opt/qt:$CMAKE_PREFIX_PATH
         cmake ../
         make
         otool -L main
