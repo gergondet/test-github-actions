@@ -15,9 +15,9 @@ if(APPLE)
     message("Qwt found: ${Qwt}")
     add_library(Qwt::Qwt UNKNOWN IMPORTED)
     set_target_properties(Qwt::Qwt PROPERTIES
+                          IMPORTED_LOCATION "${Qwt}"
                           INTERFACE_INCLUDE_DIRECTORIES "${Qwt}/Headers"
                           )
-    target_link_libraries(Qwt::Qwt INTERFACE ${Qwt})
   else()
     message(FATAL_ERROR "Could not find Qwt on your system")
   endif()
