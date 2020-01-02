@@ -25,7 +25,6 @@ jobs:
           FFMPEG_PID=$!
           sleep 10s
           kill -2 $FFMPEG_PID
-          kill -9 $GLXGEARS_PID
           sleep 5s
       - name: Upload video
         uses: actions/upload-artifact@v1
