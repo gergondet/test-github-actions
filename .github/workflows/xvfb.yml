@@ -23,7 +23,7 @@ jobs:
           GLXGEARS_PID=$!
           sleep 5s
           mkdir -p /tmp/video
-          ffmpeg -y -f x11grab -framerate 25 -video_size cif -i $DISPLAY /tmp/video/xvfb.mpg &
+          ffmpeg -y -f x11grab -framerate 25 -video_size 1920x1080 -i $DISPLAY /tmp/video/xvfb.mpg &
           FFMPEG_PID=$!
           sleep 10s
           kill -2 $FFMPEG_PID
