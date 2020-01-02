@@ -11,7 +11,7 @@ jobs:
           set -e
           set -x
           sudo apt-get update -qq
-          sudo apt-get install -qq xvfb ffmpeg mesa-utils fluxbox
+          sudo apt-get install -qq xvfb ffmpeg mesa-utils fluxbox xserver-xorg xserver-xorg-core xserver-xorg-video-all libwayland-egl1-mesa
       - name: Setup xvfb and run application
         run: |
           Xvfb :1 -screen 0 1920x1080x24 &
