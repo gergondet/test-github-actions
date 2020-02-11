@@ -1,0 +1,17 @@
+name: Test stuff in git
+
+on:
+  push:
+    paths:
+      - ".github/workflows/git.yml"
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test git status
+        run: |
+          set -e
+          set -x
+          git status
+          git ls-files

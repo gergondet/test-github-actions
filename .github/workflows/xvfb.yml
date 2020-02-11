@@ -1,6 +1,9 @@
 name: Run Xvfb to record video
 
-on: push
+on:
+  push:
+    paths:
+      - ".github/workflows/xvfb.yml"
 
 jobs:
   main:
