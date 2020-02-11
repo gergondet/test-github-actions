@@ -13,5 +13,8 @@ jobs:
         run: |
           set -e
           set -x
+          pwd
+          cd $GITHUB_WORKSPACE
+          pwd
           git status
           git ls-files
