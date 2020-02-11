@@ -9,12 +9,11 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: recursive
       - name: Test git status
         run: |
           set -e
           set -x
-          pwd
-          cd $GITHUB_WORKSPACE
-          pwd
-          git status
           git ls-files
