@@ -26,10 +26,7 @@ jobs:
       run: |
         set -x
         echo "::set-env name=BOOST_ROOT::${BOOST_ROOT_1_69_0}"
-        export BOOST_ROOT=${BOOST_ROOT_1_69_0}
-        ls ${BOOST_ROOT}
-        ls ${BOOST_ROOT}/lib
-        ls ${BOOST_ROOT}/bin
+      if: matrix.os == 'windows-latest'
     - name: Install dependencies
       uses: jrl-umi3218/github-actions/install-dependencies@master
       with:
