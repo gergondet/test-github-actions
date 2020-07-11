@@ -10,6 +10,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - uses: ./test-js-action
       with:
         with-docker: true
