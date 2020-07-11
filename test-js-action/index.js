@@ -28,7 +28,11 @@ async function run()
   {
     // Get options
     const with_docker = core.getInput('with-docker');
-    const docker_images = yaml.safeLoad(core.getInput('docker-images'));
+    let docker_images = yaml.safeLoad(core.getInput('docker-images'));
+    if(!docker_images)
+    {
+      docker_images = [];
+    }
     console.log(`with-docker ${with_docker}`);
     console.log(`docker-images ${docker_images}`);
     docker_images.forEach(img => console.log(`Would build on ${img}`));
