@@ -8,15 +8,19 @@ on:
 
 jobs:
   main:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-18.04]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
     - name: Non-empty list
       uses: ./test-js-action
       with:
-        with-docker: true
+        with-docker: ${{ matrix.os == 'ubuntu-18.04' }}
         docker-images: '[debian:buster, ubuntu:20.04]'
     - name: Empty list
       uses: ./test-js-action
       with:
-        with-docker: true
+        with-docker: ${{ matrix.os == 'ubuntu-16.04' }}
