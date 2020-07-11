@@ -1,3 +1,5 @@
+name: Test triggers
+
 on:
   repository_dispatch:
     types: [trigger-master, trigger-release]

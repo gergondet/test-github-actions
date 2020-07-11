@@ -1,0 +1,16 @@
+name: Test JS action
+
+on:
+  push:
+    paths:
+      - ".github/workflows/test-action.yml"
+      - "test-js-action/**"
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ./test-js-action
+      with:
+        with-docker: true
+        docker-images: ['debian:buster', 'ubuntu:20.04']
