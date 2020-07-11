@@ -13,4 +13,4 @@ jobs:
     - uses: ./test-js-action
       with:
         with-docker: true
-        docker-images: ['debian:buster', 'ubuntu:20.04']
+        docker-images: '[debian:buster, ubuntu:20.04]'
