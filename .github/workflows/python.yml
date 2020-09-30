@@ -1,0 +1,23 @@
+name: Python in Windows?
+
+on:
+  push:
+    paths:
+      - ".github/workflows/python.yml"
+
+jobs:
+  main:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Test git status
+        shell: bash
+        run: |
+          set -e
+          set -x
+          python --version || true
+          python3 --version || true
+          pip --version || true
+          pip3 --version || true
