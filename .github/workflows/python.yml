@@ -21,7 +21,11 @@ jobs:
         run: |
           set -e
           set -x
+          which python || true
           python --version || true
+          which python3 || true
           python3 --version || true
+          which pip || true
           pip --version || true
+          which pip3 || true
           pip3 --version || true
