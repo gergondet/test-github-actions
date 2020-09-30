@@ -7,12 +7,16 @@ on:
 
 jobs:
   main:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-18.04, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-      - name: Test git status
+      - name: Check python status
         shell: bash
         run: |
           set -e
