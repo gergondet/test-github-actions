@@ -1,0 +1,25 @@
+name: Python3 on macOS?
+
+on:
+  push:
+    paths:
+      - ".github/workflows/python3.yml"
+
+jobs:
+  main:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Try install cython
+        shell: bash
+        run: |
+          set -e
+          set -x
+          sudo pip3 install cython
+          python3 -c "import cython"
