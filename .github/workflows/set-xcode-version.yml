@@ -1,0 +1,26 @@
+name: Change xcode version
+
+on:
+  push:
+    paths:
+      - ".github/workflows/set-xcode-version.yml"
+
+jobs:
+  main:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Try install cython
+        shell: bash
+        run: |
+          set -e
+          set -x
+          clang --version
+          sudo xcode-select -switch /Applications/Xcode_11.7.app
+          clang --version
