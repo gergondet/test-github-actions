@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build and run
         env:
-          Boost_ROOT: "C:\hostedtoolcache\windows\Boost\1.72.0\x86_64"
+          Boost_ROOT: "C:\\hostedtoolcache\\windows\\Boost\\1.72.0\\x86_64"
         shell: bash
         run: |
           mkdir -p test-boost-project/build
