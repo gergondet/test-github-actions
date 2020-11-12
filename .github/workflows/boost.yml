@@ -17,6 +17,6 @@ jobs:
         run: |
           mkdir -p test-boost-project/build
           cd test-boost-project/build
-          cmake ../
+          cmake ../ -DBoost_USE_STATIC_LIBS=OFF
           cmake --build . --config RelWithDebInfo
           ctest -V -C RelWithDebInfo
