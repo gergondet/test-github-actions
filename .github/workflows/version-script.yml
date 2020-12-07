@@ -1,0 +1,19 @@
+name: Try building with version-script flag
+
+on:
+  push:
+    paths:
+      - '.github/workflows/version-script.yml'
+      - 'test-version-script/*'
+jobs:
+  one:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and run
+        shell: bash
+        run: |
+          mkdir -p test-version-script/build
+          cd test-version-script/build
+          cmake ../
+          make VERBOSE=1
