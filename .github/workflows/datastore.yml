@@ -1,0 +1,20 @@
+name: Try reproducing an mc_rtc::Datastore bug in macOS
+
+on:
+  push:
+    paths:
+      - '.github/workflows/datastore.yml'
+      - 'test-datastore/*'
+jobs:
+  one:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and run
+        shell: bash
+        run: |
+          mkdir -p test-datastore/build
+          cd test-datastore/build
+          cmake ../
+          cmake --build . --config RelWithDebInfo
+          ./main
