@@ -3,9 +3,13 @@
 #include <string>
 #include <typeinfo>
 
-#include <cstdlib>
-#include <cxxabi.h>
-#include <memory>
+#ifdef __GNUG__
+
+#  include <cstdlib>
+#  include <cxxabi.h>
+#  include <memory>
+
+#endif
 
 namespace mc_rtc
 {
@@ -13,7 +17,9 @@ namespace mc_rtc
 namespace internal
 {
 
-MC_RTC_UTILS_DLLAPI std::string demangle(const char * name)
+#ifdef __GNUG__
+
+std::string demangle(const char * name)
 {
   int status = 0;
 
@@ -21,6 +27,15 @@ MC_RTC_UTILS_DLLAPI std::string demangle(const char * name)
 
   return status == 0 ? res.get() : name;
 }
+
+#else
+
+std::string demangle(const char * name)
+{
+  return name;
+}
+
+#endif
 
 } // namespace internal
 
