@@ -1,0 +1,15 @@
+name: Try building a Fortran project with CMake on macOS
+
+on:
+  push:
+    paths:
+      - '.github/workflows/macos-fortran.yml'
+
+jobs:
+  one:
+    runs-on: macos-latest
+    steps:
+      - name: Check gfortran already installed?
+        shell: bash
+        run: |
+          gfortran --version || echo "No gfortran"
