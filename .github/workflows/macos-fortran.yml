@@ -13,3 +13,7 @@ jobs:
         shell: bash
         run: |
           gfortran --version || echo "No gfortran"
+          gcc --version || echo "No gcc"
+          brew update && brew install gcc
+          gfortran --version || echo "No gfortran"
+          gcc --version || echo "No gcc"
