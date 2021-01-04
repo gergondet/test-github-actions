@@ -12,8 +12,6 @@ jobs:
       - name: Check gfortran already installed?
         shell: bash
         run: |
-          gfortran --version || echo "No gfortran"
-          gcc --version || echo "No gcc"
-          brew update && brew install gcc
+          brew update && brew upgrade gcc
           gfortran --version || echo "No gfortran"
           gcc --version || echo "No gcc"
