@@ -31,3 +31,11 @@ jobs:
           python3 -c "import cython"
           cd python3
           python3 test.py
+          cd ../
+          git clone --recursive https://github.com/jrl-umi3218/Eigen3ToPython
+          cd Eigen3ToPython
+          mkdir build
+          cd build
+          cmake ../ -DPYTHON_BINDING_FORCE_PYTHON3=ON
+          make
+          make install
