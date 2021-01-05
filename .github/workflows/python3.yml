@@ -23,6 +23,7 @@ jobs:
           set -e
           set -x
           sudo xcode-select -switch /Applications/Xcode_11.7.app
+          sudo rm '/usr/local/bin/2to3'
           brew update || true
           brew install eigen boost tinyxml2 geos nanomsg yaml-cpp pkg-config libtool gcc || true
           brew upgrade eigen boost tinyxml2 geos nanomsg yaml-cpp pkg-config libtool gcc || true
