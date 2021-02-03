@@ -13,6 +13,6 @@ jobs:
         shell: bash
         run: |
           brew update && brew upgrade gcc
-          brew link gfortran
+          brew unlink gfortran && brew link gfortran
           gfortran --version || echo "No gfortran"
           gcc --version || echo "No gcc"
