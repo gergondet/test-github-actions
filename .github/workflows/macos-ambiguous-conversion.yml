@@ -1,0 +1,21 @@
+name: Investigate conversion issue on macOS
+
+on:
+  push:
+    paths:
+      - '.github/workflows/macos-ambiguous-conversion.yml'
+      - 'test-macos-ambiguous-conversion/*'
+jobs:
+  one:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and run
+        shell: bash
+        run: |
+          mkdir -p test-macos-ambiguous-conversion/build
+          cd test-macos-ambiguous-conversion/build
+          cmake ../
+          cmake --build . --config RelWithDebInfo
+          ctest -V -C RelWithDebInfo
+
