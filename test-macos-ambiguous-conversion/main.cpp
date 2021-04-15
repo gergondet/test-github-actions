@@ -7,6 +7,10 @@ struct Foo
   {
     return 0;
   }
+  operator uint32_t() const
+  {
+    return 0;
+  }
   operator uint64_t() const
   {
     return 0;
@@ -16,6 +20,6 @@ struct Foo
 int main()
 {
   size_t s = Foo{};
-  static_assert(std::is_same_v<uint64_t, size_t>, "OK");
+  static_assert(std::is_same_v<uint32_t, size_t>, "OK");
   return s;
 }
