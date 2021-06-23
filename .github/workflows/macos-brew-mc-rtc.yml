@@ -16,11 +16,6 @@ jobs:
           brew upgrade
           brew tap mc-rtc/mc-rtc
           brew install mc_rtc
-      - name: Install twice
-        shell: bash
-        run: |
-          sudo chown -R $(whoami) /usr/local/Cellar
-          brew install mc_rtc
       - name: Check /usr/local/lib
         shell: bash
         run: |
