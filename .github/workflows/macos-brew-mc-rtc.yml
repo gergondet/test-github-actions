@@ -1,0 +1,31 @@
+name: Check mc_rtc installation with brew
+
+on:
+  push:
+    paths:
+      - '.github/workflows/macos-brew-mc-rtc.yml'
+
+jobs:
+  one:
+    runs-on: macos-latest
+    steps:
+      - name: Install mc-rtc
+        shell: bash
+        run: |
+          brew update
+          brew upgrade
+          brew tap mc-rtc/mc-rtc
+          brew install mc_rtc
+      - name: Install twice
+        shell: bash
+        run: |
+          sudo chown -R $(whoami) /usr/local/Cellar
+          brew install mc_rtc
+      - name: Check /usr/local/lib
+        shell: bash
+        run: |
+          ls /usr/local/lib
+      - name: Check /usr/local/lib/cmake
+        shell: bash
+        run: |
+          ls /usr/local/lib/cmake
