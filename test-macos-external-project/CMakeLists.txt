@@ -6,6 +6,8 @@ enable_testing()
 include(ExternalProject)
 
 execute_process(COMMAND brew update)
+execute_process(COMMAND brew uninstall cmake)
+execute_process(COMMAND brew install cmake@3.22.0)
 execute_process(COMMAND brew install eigen cmake)
 execute_process(COMMAND brew upgrade eigen cmake)
 
