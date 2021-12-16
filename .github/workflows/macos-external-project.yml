@@ -1,0 +1,19 @@
+name: Investigate ExternalProject_Add issue on macOS
+
+on:
+  push:
+    paths:
+      - '.github/workflows/macos-external-project.yml'
+      - 'test-macos-external-project/*'
+jobs:
+  one:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and run
+        shell: bash
+        run: |
+          mkdir -p test-macos-external-project/build
+          cd test-macos-external-project/build
+          cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+          cmake --build . --config RelWithDebInfo
