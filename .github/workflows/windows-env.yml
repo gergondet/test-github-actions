@@ -1,0 +1,37 @@
+name: Try setting environment variables from powershell
+
+on:
+  push:
+    paths:
+      - '.github/workflows/windows-env.yml'
+      - 'windows-env/*'
+jobs:
+  one:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set a variable from CMake
+        run: |
+          cmake -B windows-env/build -S windows-env
+      - name: Show environment
+        run: |
+          cmake -E environment
+      - name: Set a variable from shell
+        run: |
+          [System.Environment]::SetEnvironmentVariable('BOOST_ROOT', 'TEST_TEST_TEST', 'User')
+      - name: Show environment
+        run: |
+          cmake -E environment
+      - name: Set a variable from cmd
+        shell: cmd
+        run: |
+          setx BOOST_ROOT_CMD TEST_TEST_TEST
+      - name: Show environment
+        run: |
+          cmake -E environment
+      - name: Set a variable from shell (Machine scope)
+        run: |
+          [System.Environment]::SetEnvironmentVariable('BOOST_ROOT', 'TEST_TEST_TEST_MACHINE', 'Machine')
+      - name: Show environment
+        run: |
+          cmake -E environment
