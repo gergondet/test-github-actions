@@ -26,3 +26,4 @@ jobs:
           python --version || true
           which pip || true
           pip --version || true
+          pip install Cython coverage nose numpy
