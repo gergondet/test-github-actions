@@ -22,7 +22,7 @@ if(boost_stacktrace_addr2line_FOUND)
 endif()
 
 find_package(Boost COMPONENTS stacktrace_windbg)
-if(boost_stacktrace_windbg_FOUND)
+if(boost_stacktrace_windbg_FOUND or Boost_stacktrace_windbg_FOUND)
   message("stacktrace_windbg OK")
   set(BOOST_STACKTRACE_USE "BOOST_STACKTRACE_USE_WINDBG")
   set(BOOST_STACKTRACE_LIB "Boost::stacktrace_windbg")
@@ -45,4 +45,4 @@ target_link_libraries(main PUBLIC ${BOOST_STACKTRACE_LIB})
 
 add_test(NAME main COMMAND main)
 
-install(main RUNTIME DESTINATION bin)
+install(TARGETS main RUNTIME DESTINATION bin)
