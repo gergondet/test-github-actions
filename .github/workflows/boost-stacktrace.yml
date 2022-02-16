@@ -1,0 +1,30 @@
+name: Test Boost.Stacktrace
+
+on:
+  push:
+    paths:
+      - ".github/workflows/boost-stacktrace.yml"
+      - "test-boost-stacktrace/*"
+
+jobs:
+  main:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os {{
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      uses: jrl-umi3218/github-actions/install-dependencies@master
+      with:
+        compiler: gcc
+        build-type: RelWithDebInfo
+        macos: |
+          brew: boost
+    - name: Build and test
+      uses: jrl-umi3218/github-actions/build-cmake-project@master
+      with:
+        compiler: gcc
+        build-type: RelWithDebInfo
+        project-dir: test-boost-stacktrace
