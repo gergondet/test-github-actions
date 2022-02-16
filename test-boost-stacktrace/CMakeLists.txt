@@ -21,6 +21,13 @@ if(boost_stacktrace_addr2line_FOUND)
   set(BOOST_STACKTRACE_LIB "Boost::stacktrace_addr2line")
 endif()
 
+find_package(Boost COMPONENTS stacktrace_windbg)
+if(boost_stacktrace_windbg_FOUND)
+  message("stacktrace_windbg OK")
+  set(BOOST_STACKTRACE_USE "BOOST_STACKTRACE_USE_WINDBG")
+  set(BOOST_STACKTRACE_LIB "Boost::stacktrace_windbg")
+endif()
+
 find_package(Boost COMPONENTS stacktrace_backtrace)
 if(boost_stacktrace_backtrace_FOUND)
   message("stacktrace_backtrace OK")
