@@ -44,3 +44,5 @@ target_compile_definitions(main PUBLIC ${BOOST_STACKTRACE_USE})
 target_link_libraries(main PUBLIC ${BOOST_STACKTRACE_LIB})
 
 add_test(NAME main COMMAND main)
+
+install(main RUNTIME DESTINATION bin)
