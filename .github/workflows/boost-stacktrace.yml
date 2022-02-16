@@ -20,6 +20,8 @@ jobs:
       with:
         compiler: gcc
         build-type: RelWithDebInfo
+        ubuntu: |
+          apt: libboost-stacktrace-dev
         macos: |
           brew: boost
     - name: Build and test
