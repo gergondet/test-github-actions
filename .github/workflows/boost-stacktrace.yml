@@ -24,6 +24,10 @@ jobs:
           apt: libboost-stacktrace-dev
         macos: |
           brew: boost
+    - name: Show Boost libraries
+      if: matrix.os == 'macos-latest'
+      run: |
+        ls /usr/local/lib/libboost_*
     - name: Build and test
       uses: jrl-umi3218/github-actions/build-cmake-project@master
       with:
