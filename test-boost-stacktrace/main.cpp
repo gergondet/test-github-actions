@@ -1,3 +1,4 @@
+#define BOOST_STACKTRACE_LINK
 #include <boost/stacktrace.hpp>
 
 #include <iostream>
