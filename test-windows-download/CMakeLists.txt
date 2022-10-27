@@ -1,7 +1,30 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(WindowsDownload LANGUAGES CXX)
-set(URL "https://cfhcable.dl.sourceforge.net/project/boost/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe")
+
+message("CMAKE_TLS_VERIFY IS ${CMAKE_TLS_VERIFY}")
+
+set(BOOST_VERSION "1.77.0")
+set(BOOST_VERSION_ "1_77_0")
+set(MSVC_TOOLSET_VERSION_DOT "14.2")
+set(URL "http://sourceforge.net/projects/boost/files/boost-binaries/${BOOST_VERSION}/boost_${BOOST_VERSION_}-msvc-${MSVC_TOOLSET_VERSION_DOT}-64.exe")
 set(DESTINATION "boot.exe")
 set(EXPECTED_SHA256 8cf6bb866ff83922b19a7418e94bc1fce87cae0dea6077624e44de3c6e27505a)
-file(DOWNLOAD "${URL}" "${DESTINATION}" EXPECTED_HASH SHA256=${EXPECTED_SHA256} SHOW_PROGRESS STATUS DOWNLOAD_STATUS)
+file(DOWNLOAD "${URL}" "${DESTINATION}" LOG DOWNLOAD_LOG STATUS DOWNLOAD_STATUS)
+
+if(DOWNLOAD_STATUS EQUAL 0)
+  message("Download OK")
+  message("Download log":)
+  message("")
+  message("${LOG_DOWNLOAD}")
+else()
+  message("Download failed")
+  message("Download log":)
+  message("")
+  message("${LOG_DOWNLOAD}")
+endif()
+
+file(SHA256 "${DESTINATION}" DOWNLOAD_HASH)
+if(NOT "${DOWNLOAD_HASH}" STREQUAL "${EXPECTED_SHA256}")
+  message(FATAL_ERROR "Download failed, see above")
+endif()
