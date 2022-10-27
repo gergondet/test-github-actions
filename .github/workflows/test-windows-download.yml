@@ -1,0 +1,15 @@
+name: Download in Windows CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/test-windows-download.yml'
+      - 'test-windows-download/*'
+jobs:
+  one:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: CMake
+        run: |
+          cmake -B test-windows-download/build -S test-windows-download
