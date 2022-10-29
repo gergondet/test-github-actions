@@ -17,18 +17,22 @@ jobs:
         $Try = 1
         $MaxTry = 10
         $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        $Out = "$env:TEMP\boost.exe"
         while($Try -ne $MaxTry + 1)
         {
           try
           {
-            (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost.exe")
-            Get-FileHash "$env:TEMP\boost.exe" | Format-List
-            Remove-Item "$env:TEMP\boost.exe"
+            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
+            Get-FileHash $Out | Format-List
+            Remove-Item $Out
             break
           }
           catch
           {
-            Remove-Item "$env:TEMP\boost.exe"
+            if(Test-Path $Out)
+            {
+              Remove-Item $Out
+            }
             $Try++
             Write-Host "Download failed, try $Try out of $MaxTry"
           }
@@ -40,18 +44,22 @@ jobs:
         $Try = 1
         $MaxTry = 10
         $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        $Out = "$env:TEMP\boost.exe"
         while($Try -ne $MaxTry + 1)
         {
           try
           {
-            (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost.exe")
-            Get-FileHash "$env:TEMP\boost.exe" | Format-List
-            Remove-Item "$env:TEMP\boost.exe"
+            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
+            Get-FileHash $Out | Format-List
+            Remove-Item $Out
             break
           }
           catch
           {
-            Remove-Item "$env:TEMP\boost.exe"
+            if(Test-Path $Out)
+            {
+              Remove-Item $Out
+            }
             $Try++
             Write-Host "Download failed, try $Try out of $MaxTry"
           }
@@ -63,18 +71,22 @@ jobs:
         $Try = 1
         $MaxTry = 10
         $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        $Out = "$env:TEMP\boost.exe"
         while($Try -ne $MaxTry + 1)
         {
           try
           {
-            (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost.exe")
-            Get-FileHash "$env:TEMP\boost.exe" | Format-List
-            Remove-Item "$env:TEMP\boost.exe"
+            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
+            Get-FileHash $Out | Format-List
+            Remove-Item $Out
             break
           }
           catch
           {
-            Remove-Item "$env:TEMP\boost.exe"
+            if(Test-Path $Out)
+            {
+              Remove-Item $Out
+            }
             $Try++
             Write-Host "Download failed, try $Try out of $MaxTry"
           }
@@ -86,18 +98,22 @@ jobs:
         $Try = 1
         $MaxTry = 10
         $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        $Out = "$env:TEMP\boost.exe"
         while($Try -ne $MaxTry + 1)
         {
           try
           {
-            (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost.exe")
-            Get-FileHash "$env:TEMP\boost.exe" | Format-List
-            Remove-Item "$env:TEMP\boost.exe"
+            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
+            Get-FileHash $Out | Format-List
+            Remove-Item $Out
             break
           }
           catch
           {
-            Remove-Item "$env:TEMP\boost.exe"
+            if(Test-Path $Out)
+            {
+              Remove-Item $Out
+            }
             $Try++
             Write-Host "Download failed, try $Try out of $MaxTry"
           }
@@ -109,18 +125,22 @@ jobs:
         $Try = 1
         $MaxTry = 10
         $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        $Out = "$env:TEMP\boost.exe"
         while($Try -ne $MaxTry + 1)
         {
           try
           {
-            (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost.exe")
-            Get-FileHash "$env:TEMP\boost.exe" | Format-List
-            Remove-Item "$env:TEMP\boost.exe"
+            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
+            Get-FileHash $Out | Format-List
+            Remove-Item $Out
             break
           }
           catch
           {
-            Remove-Item "$env:TEMP\boost.exe"
+            if(Test-Path $Out)
+            {
+              Remove-Item $Out
+            }
             $Try++
             Write-Host "Download failed, try $Try out of $MaxTry"
           }
