@@ -98,3 +98,33 @@ jobs:
         $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
         [Net.ServicePointManager]::SecurityProtocol = "tls13, tls12, tls11, tls"
         (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-tls13-5.exe")
+    - name: Download Boost - Invoke-WebRequest (1/5)
+      shell: pwsh
+      continue-on-error: true
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        Invoke-WebRequest -Uri $Url -OutFile "$env:TEMP\boost-invoke-webrequest-1.exe"
+    - name: Download Boost - Invoke-WebRequest (2/5)
+      shell: pwsh
+      continue-on-error: true
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        Invoke-WebRequest -Uri $Url -OutFile "$env:TEMP\boost-invoke-webrequest-2.exe"
+    - name: Download Boost - Invoke-WebRequest (3/5)
+      shell: pwsh
+      continue-on-error: true
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        Invoke-WebRequest -Uri $Url -OutFile "$env:TEMP\boost-invoke-webrequest-3.exe"
+    - name: Download Boost - Invoke-WebRequest (4/5)
+      shell: pwsh
+      continue-on-error: true
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        Invoke-WebRequest -Uri $Url -OutFile "$env:TEMP\boost-invoke-webrequest-4.exe"
+    - name: Download Boost - Invoke-WebRequest (5/5)
+      shell: pwsh
+      continue-on-error: true
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        Invoke-WebRequest -Uri $Url -OutFile "$env:TEMP\boost-invoke-webrequest-5.exe"
