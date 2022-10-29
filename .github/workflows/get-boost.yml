@@ -10,138 +10,54 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Download Boost - With Retry (1/5)
+    - name: Download Boost - With Retry
       shell: pwsh
       continue-on-error: true
       run: |
-        $Try = 1
-        $MaxTry = 10
-        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
-        $Out = "$env:TEMP\boost.exe"
-        while($Try -ne $MaxTry + 1)
+        function DownloadFileWithRetry
         {
-          try
+          param(
+            [Parameter(Mandatory = $true)]
+            $Url,
+            [Parameter(Mandatory = $true)]
+            $Out,
+            [ValidateNotNullOrEmpty()]
+            $MaxTry=10
+          )
+          $Try = 1
+          while($Try -le $MaxTry)
           {
-            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
+            if($Try -ne 1)
+            {
+              Write-Host "Download failed, try $Try out of $MaxTry"
+            }
+            try
+            {
+              (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
+              break
+            }
+            catch
+            {
+              if(Test-Path $Out)
+              {
+                Remove-Item $Out
+              }
+              $Try++
+            }
+          }
+          if(Test-Path $Out)
+          {
+            Write-Host "Download succeeded after $Try tries"
             Get-FileHash $Out | Format-List
             Remove-Item $Out
-            break
-          }
-          catch
-          {
-            if(Test-Path $Out)
-            {
-              Remove-Item $Out
-            }
-            $Try++
-            Write-Host "Download failed, try $Try out of $MaxTry"
           }
         }
-    - name: Download Boost - With Retry (2/5)
-      shell: pwsh
-      continue-on-error: true
-      run: |
-        $Try = 1
-        $MaxTry = 10
         $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
         $Out = "$env:TEMP\boost.exe"
-        while($Try -ne $MaxTry + 1)
+        $DownloadI = 0
+        while($DownloadI -le 10)
         {
-          try
-          {
-            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
-            Get-FileHash $Out | Format-List
-            Remove-Item $Out
-            break
-          }
-          catch
-          {
-            if(Test-Path $Out)
-            {
-              Remove-Item $Out
-            }
-            $Try++
-            Write-Host "Download failed, try $Try out of $MaxTry"
-          }
-        }
-    - name: Download Boost - With Retry (3/5)
-      shell: pwsh
-      continue-on-error: true
-      run: |
-        $Try = 1
-        $MaxTry = 10
-        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
-        $Out = "$env:TEMP\boost.exe"
-        while($Try -ne $MaxTry + 1)
-        {
-          try
-          {
-            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
-            Get-FileHash $Out | Format-List
-            Remove-Item $Out
-            break
-          }
-          catch
-          {
-            if(Test-Path $Out)
-            {
-              Remove-Item $Out
-            }
-            $Try++
-            Write-Host "Download failed, try $Try out of $MaxTry"
-          }
-        }
-    - name: Download Boost - With Retry (4/5)
-      shell: pwsh
-      continue-on-error: true
-      run: |
-        $Try = 1
-        $MaxTry = 10
-        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
-        $Out = "$env:TEMP\boost.exe"
-        while($Try -ne $MaxTry + 1)
-        {
-          try
-          {
-            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
-            Get-FileHash $Out | Format-List
-            Remove-Item $Out
-            break
-          }
-          catch
-          {
-            if(Test-Path $Out)
-            {
-              Remove-Item $Out
-            }
-            $Try++
-            Write-Host "Download failed, try $Try out of $MaxTry"
-          }
-        }
-    - name: Download Boost - With Retry (5/5)
-      shell: pwsh
-      continue-on-error: true
-      run: |
-        $Try = 1
-        $MaxTry = 10
-        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
-        $Out = "$env:TEMP\boost.exe"
-        while($Try -ne $MaxTry + 1)
-        {
-          try
-          {
-            (New-Object System.Net.WebClient).DownloadFile($Url, $Out)
-            Get-FileHash $Out | Format-List
-            Remove-Item $Out
-            break
-          }
-          catch
-          {
-            if(Test-Path $Out)
-            {
-              Remove-Item $Out
-            }
-            $Try++
-            Write-Host "Download failed, try $Try out of $MaxTry"
-          }
+          Write-Host "Download $DownloadI out of 10"
+          DownloadFileWithRetry -Url "$Url" -Out "$Out"
+          $DownloadI++
         }
