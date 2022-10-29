@@ -1,0 +1,88 @@
+name: Download Boost with Powershell
+
+on:
+  push:
+    paths:
+      - ".github/workflows/get-boost.yml"
+
+jobs:
+  main:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download Boost - No tls13 (1/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-notls13-1.exe")
+
+    - name: Download Boost - No tls13 (2/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-notls13-2.exe")
+
+    - name: Download Boost - No tls13 (3/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-notls13-3.exe")
+    - name: Download Boost - No tls13 (3/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-notls13-3.exe")
+    - name: Download Boost - No tls13 (4/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-notls13-4.exe")
+    - name: Download Boost - No tls13 (5/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-notls13-5.exe")
+    - name: Download Boost - With tls13 (1/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls13, tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-tls13-1.exe")
+
+    - name: Download Boost - With tls13 (2/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls13, tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-tls13-2.exe")
+
+    - name: Download Boost - With tls13 (3/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls13, tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-tls13-3.exe")
+    - name: Download Boost - With tls13 (3/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls13, tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-tls13-3.exe")
+    - name: Download Boost - With tls13 (4/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls13, tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-tls13-4.exe")
+    - name: Download Boost - With tls13 (5/5)
+      shell: pwsh
+      run: |
+        $Url = "https://sourceforge.net/projects/boost/files/boost-binaries/1.77.0/boost_1_77_0-msvc-14.2-64.exe"
+        [Net.ServicePointManager]::SecurityProtocol = "tls13, tls12, tls11, tls"
+        (New-Object System.Net.WebClient).DownloadFile($Url, "$env:TEMP\boost-tls13-5.exe")
