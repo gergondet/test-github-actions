@@ -1,0 +1,25 @@
+name: Set path in Windows
+
+on:
+  push:
+    paths:
+      - '.github/workflows/test-set-windows-env.yml'
+jobs:
+  one:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Default shell
+        run: |
+          echo "C:/DefaultShell/MyPath" >> $GITHUB_PATH
+      - name: Default shell
+        shell: bash
+        run: |
+          echo "/c/BashShell/MyPath" >> $GITHUB_PATH
+      - name: Show me the path
+        run: |
+          echo "========"
+          echo "env:PATH"
+          echo "========"
+          echo "$env:PATH"
+          echo "========"
