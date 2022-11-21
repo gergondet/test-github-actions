@@ -3,17 +3,27 @@
 on:
   workflow_call:
     inputs:
-      runners:
+      dist:
         required: false
-        default: '["ubuntu-18.04", "ubuntu-20.04"]'
+        default: '["bionic", "focal"]'
+        type: string
+      arch:
+        required: false
+        default: '["i386", "amd64"]'
+        type: string
+      exclude:
+        required: false
+        default: '[{"dist": "focal", "arch": "i386"}]'
         type: string
 jobs:
   build-it:
     strategy:
       matrix:
-        runner: ${{fromJson(inputs.runners)}}
-    runs-on: ${{ matrix.runner }}
+        dist: ${{fromJson(inputs.dist}}
+        arch: ${{fromJson(inputs.arch}}
+      exclude: ${{fromJson(inputs.exclude}}
+    runs-on: ubuntu-20.04
     steps:
       - shell: bash
         run: |
-          lsb_release -a
+          echo "Run for ${{ matrix.dist}}/${{ matrix.arch }}"
