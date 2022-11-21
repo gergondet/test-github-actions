@@ -21,7 +21,7 @@ jobs:
       matrix:
         dist: ${{ fromJson(inputs.dist)}}
         arch: ${{ fromJson(inputs.arch)}}
-      exclude: ${{ fromJson(inputs.exclude) }}
+        exclude: ${{ fromJson(inputs.exclude) }}
     runs-on: ubuntu-20.04
     steps:
       - shell: bash
