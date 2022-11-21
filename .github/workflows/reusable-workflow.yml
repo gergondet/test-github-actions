@@ -1,0 +1,19 @@
+# This is a reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      runners:
+        required: true
+        default: [ubuntu-18.04, ubuntu-20.04]
+        type: string
+jobs:
+  build-it:
+    strategy:
+      matrix:
+        runner: ${{ inputs.runners }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - shell: bash
+        run: |
+          lsb_release -a

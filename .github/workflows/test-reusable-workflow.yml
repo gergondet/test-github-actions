@@ -1,0 +1,9 @@
+on:
+  push:
+    paths:
+      - '.github/workflows/test-reusable-workflow.yml'
+      - '.github/workflows/reusable-workflow.yml'
+
+jobs:
+  doit:
+    uses: gergondet/test-github-actions/.github/workflows/reusable-workflow.yml@master
