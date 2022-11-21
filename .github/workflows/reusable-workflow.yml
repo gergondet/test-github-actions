@@ -5,7 +5,7 @@ on:
     inputs:
       runners:
         required: true
-        default: [ubuntu-18.04, ubuntu-20.04]
+        default: "[ubuntu-18.04, ubuntu-20.04]"
         type: string
 jobs:
   build-it:
