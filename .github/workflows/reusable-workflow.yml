@@ -11,7 +11,7 @@ jobs:
   build-it:
     strategy:
       matrix:
-        runner: ${{ inputs.runners }}
+        runner: ${{fromJson(inputs.runners)}}
     runs-on: ${{ matrix.runner }}
     steps:
       - shell: bash
