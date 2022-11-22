@@ -4,8 +4,11 @@ on:
       - '.github/workflows/test-reusable-workflow.yml'
       - '.github/workflows/reusable-workflow.yml'
 
+env:
+  DEPS: '["jrl-umi3218/SpaceVecAlg", "jrl-umi3218/RBDyn"]'
+
 jobs:
   doit:
     uses: gergondet/test-github-actions/.github/workflows/reusable-workflow.yml@master
     with:
-      deps: ${{ secrets.DEPS }}
+      deps: ${{ env.DEPS }}
