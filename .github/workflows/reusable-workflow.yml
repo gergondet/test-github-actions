@@ -16,6 +16,10 @@ on:
               {"dist": "jammy", "arch": "i386" },
             ]
           }
+      deps:
+        required: false
+        default: '[]'
+        type: string
       dist:
         required: false
         default: '["bionic", "focal"]'
@@ -37,3 +41,12 @@ jobs:
       - shell: bash
         run: |
           echo "Run for ${{ matrix.dist}}/${{ matrix.arch }}"
+  trigger-deps:
+    strategy:
+      matrix:
+        dep: ${{ fromJson(inputs.deps) }}
+    runs-on: ubuntu-20.04
+    steps:
+      - shell: bash
+        run: |
+          echo "Trigger ${{ matrix.dep }}"
