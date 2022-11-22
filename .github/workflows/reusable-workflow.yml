@@ -18,7 +18,7 @@ on:
           }
       deps:
         required: false
-        default: '[]'
+        default: ''
         type: string
       dist:
         required: false
@@ -42,6 +42,7 @@ jobs:
         run: |
           echo "Run for ${{ matrix.dist}}/${{ matrix.arch }}"
   trigger-deps:
+    if: ${{ inputs.deps != '' }}
     strategy:
       matrix:
         dep: ${{ fromJson(inputs.deps) }}
