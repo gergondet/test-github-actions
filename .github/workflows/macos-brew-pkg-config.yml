@@ -1,0 +1,16 @@
+name: Check pkg-config installation with brew
+
+on:
+  push:
+    paths:
+      - '.github/workflows/macos-brew-pkg-config.yml'
+
+jobs:
+  one:
+    runs-on: macos-latest
+    steps:
+      - name: Check
+        shell: bash
+        run: |
+          brew install pkg-config
+          pkg-config --version
