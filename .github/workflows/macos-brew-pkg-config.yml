@@ -16,4 +16,8 @@ jobs:
         run: |
           brew install pkg-config
           pkg-config --version
+          export BREW_DEPENDENCIES="coreutils pkg-config gnu-sed wget python cmake doxygen libtool tinyxml2 geos boost eigen nanomsg yaml-cpp qt qwt pyqt gcc spdlog ninja libnotify"
+          brew update
+          brew install $BREW_DEPENDENCIES
+          brew upgrade $BREW_DEPENDENCIES
           cmake -P macos-brew-pkg-config/test.cmake
