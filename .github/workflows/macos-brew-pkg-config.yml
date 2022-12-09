@@ -4,13 +4,16 @@ on:
   push:
     paths:
       - '.github/workflows/macos-brew-pkg-config.yml'
+      - 'macos-brew-pkg-config/*'
 
 jobs:
   one:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Check
         shell: bash
         run: |
           brew install pkg-config
           pkg-config --version
+          cmake -P macos-brew-pkg-config/test.cmake
