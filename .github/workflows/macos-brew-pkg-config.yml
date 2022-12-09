@@ -10,6 +10,11 @@ jobs:
   one:
     runs-on: macos-latest
     steps:
+      - name: Clear environment (script)
+        uses: jrl-umi3218/github-actions/install-dependencies@master
+        with:
+          compiler: gcc
+          build-type: RelWithDebInfo
       - name: Before
         shell: bash
         run: |
