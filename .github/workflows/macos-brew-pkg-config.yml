@@ -27,6 +27,10 @@ jobs:
           echo "otool -L pkg-config"
           otool -L /usr/local/bin/pkg-config
           pkg-config --version
+      - name: Brew upgrade
+        shell: bash
+        run: |
+          brew upgrade || true
       - name: After
         shell: bash
         run: |
