@@ -30,7 +30,7 @@ jobs:
       - name: Brew upgrade
         shell: bash
         run: |
-          brew upgrade || true
+          brew upgrade
       - name: After
         shell: bash
         run: |
