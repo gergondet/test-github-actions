@@ -31,6 +31,10 @@ jobs:
         shell: bash
         run: |
           brew upgrade
+      - name: Brew doctor
+        shell: bash
+        run: |
+          brew doctor
       - name: After
         shell: bash
         run: |
