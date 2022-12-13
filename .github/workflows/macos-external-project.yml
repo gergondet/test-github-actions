@@ -18,6 +18,10 @@ jobs:
         shell: bash
         run: |
           env
+      - name: CMake version
+        shell: bash
+        run: |
+          cmake --version
       - name: Build and run
         shell: bash
         run: |
