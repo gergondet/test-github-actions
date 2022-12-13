@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.25)
 project(MetaProject)
 enable_testing()
 
+message("CMAKE_SYSTEM_NAME ${CMAKE_SYSTEM_NAME}")
 message("CMAKE_CROSSCOMPILING is ${CMAKE_CROSSCOMPILING}")
 message("CMAKE_OSX_SYSROOT is ${CMAKE_OSX_SYSROOT}")
 message("CMAKE_OSX_DEPLOYMENT_TARGET is ${CMAKE_OSX_DEPLOYMENT_TARGET}")
