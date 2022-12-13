@@ -10,6 +10,13 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Bootstrap
+        shell: bash
+        run: |
+          BREW_BASICS="cmake coreutils gnu-sed ninja git gcc"
+          brew update || true
+          brew install ${BREW_BASICS} || true
+          brew upgrade ${BREW_BASICS} || true
       - name: Build and run
         shell: bash
         run: |
