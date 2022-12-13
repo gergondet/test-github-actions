@@ -3,8 +3,7 @@ cmake_minimum_required(VERSION 3.20)
 project(MetaProject)
 enable_testing()
 
-message("CMAKE_OSX_DEPLOYMENT_TARGET is ${CMAKE_OSX_DEPLOYMENT_TARGET}")
-message("CMAKE_OSX_ARCHITECTURES is ${CMAKE_OSX_ARCHITECTURES}")
+message(FATAL_ERROR "CMAKE_OSX_DEPLOYMENT_TARGET is ${CMAKE_OSX_DEPLOYMENT_TARGET}")
 
 include(ExternalProject)
 

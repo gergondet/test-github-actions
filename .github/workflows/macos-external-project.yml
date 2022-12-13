@@ -13,7 +13,5 @@ jobs:
       - name: Build and run
         shell: bash
         run: |
-          mkdir -p test-macos-external-project/build
-          cd test-macos-external-project/build
-          cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo
-          cmake --build . --config RelWithDebInfo
+          mkdir -p ${TMPDIR-/tmp}/build
+          cmake -S ${GITHUB_WORKSPACE} -B ${TMPDIR-/tmp}/build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DVERBOSE_TEST_OUTPUT=ON -DMC_RTC_SUPERBUILD_VERBOSE=ON
