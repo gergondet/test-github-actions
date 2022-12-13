@@ -8,7 +8,7 @@ message("CMAKE_OSX_ARCHITECTURES is ${CMAKE_OSX_ARCHITECTURES}")
 
 include(ExternalProject)
 
-execute_process(COMMAND brew install eigen cmake boost)
+execute_process(COMMAND brew install eigen cmake boost ninja)
 execute_process(COMMAND python3 -m pip install Cython coverage pytest numpy)
 
 set(CMAKE_ARGS)
