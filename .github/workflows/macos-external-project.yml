@@ -7,9 +7,17 @@ on:
       - 'test-macos-external-project/*'
 jobs:
   one:
-    runs-on: macos-12
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-12, macos-11]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
+      - name: Env
+        shell: bash
+        run: |
+          env
       - name: Build and run
         shell: bash
         run: |
