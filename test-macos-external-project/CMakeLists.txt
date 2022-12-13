@@ -23,20 +23,21 @@ list(PREPEND CMAKE_ARGS
 ExternalProject_Add(Eigen3ToPython
   GIT_REPOSITORY https://github.com/jrl-umi3218/Eigen3ToPython
   GIT_TAG master
-  CMAKE_ARGS ${CMAKE_ARGS}
+  CONFIGURE_COMMAND ${CMAKE_COMMAND} -G "Ninja" -B "<BINARY_DIR>" -S "<SOURCE_DIR>" ${CMAKE_ARGS}
 )
 ExternalProject_Add(SpaceVecAlg
   GIT_REPOSITORY https://github.com/jrl-umi3218/SpaceVecAlg
   GIT_TAG master
-  CMAKE_ARGS ${CMAKE_ARGS}
+  CONFIGURE_COMMAND ${CMAKE_COMMAND} -G "Ninja" -B "<BINARY_DIR>" -S "<SOURCE_DIR>" ${CMAKE_ARGS}
 )
 ExternalProject_Add(sch-core
   GIT_REPOSITORY https://github.com/jrl-umi3218/sch-core
   GIT_TAG master
-  CMAKE_ARGS ${CMAKE_ARGS} -DCMAKE_CXX_STANDARD=11
+  CMAKE_ARGS ${CMAKE_ARGS}
+  CONFIGURE_COMMAND ${CMAKE_COMMAND} -G "Ninja" -B "<BINARY_DIR>" -S "<SOURCE_DIR>" ${CMAKE_ARGS} -DCMAKE_CXX_STANDARD=11
 )
 ExternalProject_Add(sch-core-python
   GIT_REPOSITORY https://github.com/jrl-umi3218/sch-core-python
   GIT_TAG master
-  CMAKE_ARGS ${CMAKE_ARGS}
+  CONFIGURE_COMMAND ${CMAKE_COMMAND} -G "Ninja" -B "<BINARY_DIR>" -S "<SOURCE_DIR>" ${CMAKE_ARGS}
 )
