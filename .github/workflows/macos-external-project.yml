@@ -14,6 +14,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
+      - name: Show sw_vers
+        shell: bash
+        run: |
+          sw_vers -productVersion
       - name: Env
         shell: bash
         run: |
