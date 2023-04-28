@@ -19,3 +19,7 @@ jobs:
         shell: bash
         run: |
           python3 -c "import distutils.sysconfig; [print(\"{}: {}\".format(k, v)) for (k, v) in distutils.sysconfig.get_config_vars().items()]"
+      - name: Show sys.executable
+        shell: bash
+        run: |
+          python3 -c "import sys; print(sys.executable);"
