@@ -14,3 +14,6 @@ jobs:
           python3 -m site --user-base
           python3 -m pip uninstall pre-commit
           python3 -m pip install --user pre-commit
+      - name: Show get_config_vars
+        run: |
+          python3 -c "import distutils.sysconfig; [print(\"{}: {}\".format(k, v)) for (k, v) in distutils.sysconfig.get_config_vars().items()]"
