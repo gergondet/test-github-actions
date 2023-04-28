@@ -1,0 +1,14 @@
+name: Try stuff on Windows CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/test-windows.yml'
+jobs:
+  one:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set a variable from CMake
+        run: |
+          python3 -m site --user-base
