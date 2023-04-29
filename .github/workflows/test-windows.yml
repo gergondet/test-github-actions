@@ -14,7 +14,7 @@ jobs:
           cat << EOF > CMakeLists.txt
           cmake_minimum_required(VERSION 3.1)
           project(GetPreCommit LANGUAGES CXX)
-          find_program(MC_RTC_SUPERBUILD_DEFAULT_PYTHON python3)
+          find_program(MC_RTC_SUPERBUILD_DEFAULT_PYTHON python3 REQUIRED)
           if(MC_RTC_SUPERBUILD_DEFAULT_PYTHON)
             message("-- Use Python for install: ${MC_RTC_SUPERBUILD_DEFAULT_PYTHON}")
           endif()
