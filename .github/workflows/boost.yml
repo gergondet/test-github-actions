@@ -9,16 +9,13 @@ jobs:
   one:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Add Boost to PATH
-        env:
-          Boost_ROOT: "C:\\hostedtoolcache\\windows\\Boost\\1.72.0\\x86_64"
-        shell: bash
-        run: |
-          echo "PATH=${Boost_ROOT}\\lib;${PATH}" >> $GITHUB_ENV
+      - uses: actions/checkout@v3
+      - name: Install dependencies (Setup Boost)
+        uses: jrl-umi3218/github-actions/install-dependencies@master
+        with:
+          compiler: gcc
+          build-type: RelWithDebInfo
       - name: Build and run
-        env:
-          Boost_ROOT: "C:\\hostedtoolcache\\windows\\Boost\\1.72.0\\x86_64"
         shell: bash
         run: |
           mkdir -p test-boost-project/build
