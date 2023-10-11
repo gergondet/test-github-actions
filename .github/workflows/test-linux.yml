@@ -1,0 +1,14 @@
+name: Try stuff on Linux CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/test-linux.yml'
+jobs:
+  one:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Test stuff
+        shell: bash
+        run: |
+          locale
