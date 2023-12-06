@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 unittests="python"
 
 # Code for running a specific unit test
