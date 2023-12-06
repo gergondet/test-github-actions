@@ -11,4 +11,6 @@ jobs:
       - name: Test stuff
         shell: bash
         run: |
-          locale
+          set -e
+          set -x
+          ls /non-existent
