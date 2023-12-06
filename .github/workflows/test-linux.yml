@@ -17,3 +17,4 @@ jobs:
           set -x
           git submodule add https://github.com/jrl-umi3218/jrl-cmakemodules python/cmake
           ./run_unit_tests.sh
+          echo "run_unit_tests exit code: $?"
