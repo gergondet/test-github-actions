@@ -3,6 +3,8 @@ name: Try stuff on Linux CI
 on:
   push:
     paths:
+      - 'run_unit_tests.sh'
+      - 'python/**'
       - '.github/workflows/test-linux.yml'
 jobs:
   one:
